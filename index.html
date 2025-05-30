@@ -1,138 +1,262 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vip Autos</title>
-    <!-- Link do Bootstrap CSS -->
-    <link rel="icon" type="image/x-icon" href="imagens/favicon.png">
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Atendimento - Soluções Financeiras</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
-    <script src="links.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
-
 <body>
-    <section id="home">
-        <div id="bannerCarousel" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="imagens/banner.webp" class="d-block w-100" alt="Banner 1">
-                    <div class="carousel-caption d-md-block">
-                        <h1>Bem Vindo(a)</h1>
-                        <a href="https://wa.link/nk67wk" target="_blank" class="btnBanner">REALIZAR ATENDIMENTO</a>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="#" class="logo-text">Atendimento</a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="nav-desktop">
+                    <a href="#quitacao" class="nav-link">Quitação de Financiamento</a>
+                    <a href="#segunda-via" class="nav-link">2ª Via de Boleto</a>
+                    <a href="#liquidacao" class="nav-link">Liquidação Antecipada</a>
+                    <a href="#atualizacao" class="nav-link">Atualização de Boleto</a>
+                    <a href="#antecipacao" class="nav-link">Antecipação de Parcelas</a>
+                </nav>
+                
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation -->
+            <nav class="nav-mobile" id="mobileNav">
+                <a href="#quitacao" class="nav-link-mobile" onclick="closeMobileMenu()">Quitação de Financiamento</a>
+                <a href="#segunda-via" class="nav-link-mobile" onclick="closeMobileMenu()">2ª Via de Boleto</a>
+                <a href="#liquidacao" class="nav-link-mobile" onclick="closeMobileMenu()">Liquidação Antecipada</a>
+                <a href="#atualizacao" class="nav-link-mobile" onclick="closeMobileMenu()">Atualização de Boleto</a>
+                <a href="#antecipacao" class="nav-link-mobile" onclick="closeMobileMenu()">Antecipação de Parcelas</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="hero-title">Soluções Financeiras Simplificadas</h1>
+                    <p class="hero-description">
+                        Gerencie seus financiamentos e boletos com facilidade, segurança e praticidade.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="https://wa.link/wd3a9d" class="btn btn-primary">Nossos Serviços</a>
+                        <a href="https://wa.link/wd3a9d" class="btn btn-outline">Entre em Contato</a>
                     </div>
                 </div>
-
             </div>
-            <a class="carousel-control-prev" href="#bannerCarousel" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#bannerCarousel" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-    </section>
+        </section>
 
-    <!-- Seção Sobre Nós -->
-    <section id="sobre" class="py-5">
+        <!-- Services Section -->
+        <section id="servicos" class="services">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Nossos Serviços</h2>
+                    <p class="section-description">
+                        Oferecemos soluções completas para o gerenciamento do seu financiamento, de forma simples e segura.
+                    </p>
+                </div>
+
+                <div class="services-grid">
+                    <a href="https://wa.link/wd3a9d" target="_blank" class="service-card" id="quitacao">
+                        <div class="service-icon">
+                            <i class="fa fa-file-text"></i>
+                        </div>
+                        <h3 class="service-title">Quitação de Financiamento</h3>
+                        <p class="service-description">
+                            Quite seu financiamento de forma rápida e segura, com as melhores condições do mercado.
+                        </p>
+                        <div class="service-button">
+                            <span class="btn btn-primary">Quitar Financiamento</span>
+                        </div>
+                    </a>
+
+                    <a href="https://wa.link/wd3a9d" target="_blank" class="service-card" id="segunda-via">
+                        <div class="service-icon">
+                            <i class="fa fa-link"></i>
+                        </div>
+                        <h3 class="service-title">2ª Via de Boleto</h3>
+                        <p class="service-description">
+                            Emita a segunda via do seu boleto em poucos cliques, sem complicação.
+                        </p>
+                        <div class="service-button">
+                            <span class="btn btn-primary">Emitir 2ª Via</span>
+                        </div>
+                    </a>
+
+                    <a href="https://wa.link/wd3a9d" target="_blank" class="service-card" id="liquidacao">
+                        <div class="service-icon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <h3 class="service-title">Liquidação Antecipada</h3>
+                        <p class="service-description">
+                            Economize com a liquidação antecipada do seu contrato, com descontos especiais.
+                        </p>
+                        <div class="service-button">
+                            <span class="btn btn-primary">Liquidar Antecipadamente</span>
+                        </div>
+                    </a>
+
+                    <a href="https://wa.link/wd3a9d" target="_blank" class="service-card" id="atualizacao">
+                        <div class="service-icon">
+                            <i class="fa fa-cog"></i>
+                        </div>
+                        <h3 class="service-title">Atualização de Boleto</h3>
+                        <p class="service-description">
+                            Atualize seus boletos vencidos de forma prática e rápida.
+                        </p>
+                        <div class="service-button">
+                            <span class="btn btn-primary">Atualizar Boleto</span>
+                        </div>
+                    </a>
+
+                    <a href="https://wa.link/wd3a9d" target="_blank" class="service-card" id="antecipacao">
+                        <div class="service-icon">
+                            <i class="fa fa-info"></i>
+                        </div>
+                        <h3 class="service-title">Antecipação de Parcelas</h3>
+                        <p class="service-description">
+                            Antecipe suas parcelas e mantenha seu financiamento em dia.
+                        </p>
+                        <div class="service-button">
+                            <span class="btn btn-primary">Antecipar Parcelas</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="why-choose-us">
+            <div class="container">
+                <div class="why-choose-content">
+                    <div class="why-choose-text">
+                        <h2 class="section-title">Por que escolher nossos serviços?</h2>
+                        <p class="section-description">
+                            Oferecemos as melhores soluções para gerenciar seus financiamentos e boletos, com segurança e eficiência.
+                        </p>
+                        
+                        <ul class="reasons-list">
+                            <li class="reason-item">
+                                <i class="fa fa-check reason-check"></i>
+                                <span>Segurança e confidencialidade garantidas</span>
+                            </li>
+                            <li class="reason-item">
+                                <i class="fa fa-check reason-check"></i>
+                                <span>Atendimento rápido e eficiente</span>
+                            </li>
+                            <li class="reason-item">
+                                <i class="fa fa-check reason-check"></i>
+                                <span>Plataforma fácil de usar</span>
+                            </li>
+                            <li class="reason-item">
+                                <i class="fa fa-check reason-check"></i>
+                                <span>Melhores taxas do mercado</span>
+                            </li>
+                            <li class="reason-item">
+                                <i class="fa fa-check reason-check"></i>
+                                <span>Suporte especializado</span>
+                            </li>
+                            <li class="reason-item">
+                                <i class="fa fa-check reason-check"></i>
+                                <span>Processos 100% digitais</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-header">
+                            <h3 class="contact-title">Precisando de ajuda?</h3>
+                            <p class="contact-description">
+                                Nossa equipe está pronta para atender você.
+                            </p>
+                        </div>
+                        
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <p class="contact-label">Horário de atendimento:</p>
+                                <p class="contact-value">Segunda a Sexta: 8h às 18h</p>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <p class="contact-label">Contato:</p>
+                                <p class="contact-value">+55 (11) 96707-6052</p>
+                                <p class="contact-value">contato@auditoriaconsul.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
         <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <img src="imagens/sobre.webp" alt="Sobre" class="w-100"> 
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">Atendimento</h3>
+                    <p class="footer-description">
+                        Soluções financeiras confiáveis e eficientes para facilitar sua vida.
+                    </p>
                 </div>
-                <div class="col-md-6">
-                    <h2 class="mt-15 text-center">Sobre Nós</h2>
-                    <p class="text-center">Bem-vindo ao nosso atendimento virtual! Atuamos em parceria com as principais instituições financeiras do Brasil para oferecer um suporte rápido e eficiente.</p>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Contato</h3>
+                    <div class="footer-contacts">
+                        <div class="footer-contact">
+                            <i class="fa fa-phone"></i>
+                            <span>+55 (11) 96707-6052</span>
+                        </div>
+                        <div class="footer-contact">
+                            <i class="fa fa-envelope"></i>
+                            <span>contato@auditoriaconsul.com</span>
+                        </div>
+                    </div>
                 </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Redes Sociais</h3>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook" class="social-link">
+                            <i class="fa fa-facebook"></i>
+                        </a>
+                        <a href="#" aria-label="Instagram" class="social-link">
+                            <i class="fa fa-instagram"></i>
+                        </a>
+                        <a href="#" aria-label="LinkedIn" class="social-link">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 Atendimento. Todos os direitos reservados.</p>
+                <p>CNPJ: 13.630.787/0001-17</p>
             </div>
         </div>
-    </section>
+    </footer>
 
-    <!-- Seção Serviços -->
-    <section id="servicos">
-        <div class="container">
-            <div class="row">
-                <div class="col-8">
-                    <h2>Precisa de ajuda?</h2>
-                    <p>Fale conosco agora mesmo e emita sua 2º via.</p>
-                </div>
-                <div class="col-md-4">
-                    <a href="https://wa.link/nk67wk" class="btn" target="_blank">FALE CONOSCO</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="quem-somos">
-       <div class="container">
-        <h2 class="text-center">Nossos Serviços</h2>
-        <p class="text-center">Atendimento 100% Online: Comodidade e Agilidade ao Seu Alcance!</p>
-        <div class="row mt-5">
-            <div class="col-md-4">
-                <div class="nov">
-                    <h3 class="text-center bold mt-3">Segunda Via de Boleto</h3>
-                    <p class="text-center">Solicite, agora, atualizando a data do vencimento de seu boleto.</p>
-                    <p class="text-center"><a href="https://wa.link/nk67wk" target="_blank" class="btnBox">EMITIR 2º VIA</a></p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="nov">
-                    <h3 class="text-center bold mt-3">Parcelas em Atraso</h3>
-                    <p class="text-center">Oferecemos as melhores condições para você renegociar seu débito</p>
-                    <p class="text-center"><a href="https://wa.link/nk67wk" target="_blank" class="btnBox">RENEGOCIAR</a></p>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="nov">
-                    <h3 class="text-center bold mt-3">Antecipar Parcelas</h3>
-                    <p class="text-center">Reduzimos os juros no pagamento antecipado de suas parcelas.</p>
-                    <p class="text-center"><a href="https://wa.link/nk67wk" target="_blank" class="btnBox">ANTECIPAR</a></p>
-                </div>
-            </div>
-        </div>
-       </div>
-    </section>
-
-
-    <!-- Seção Contato -->
-    <section id="contato" class="py-5">
-        <div class="container">
-            <div class="row">
-            <div class="col-md-6">
-                <img src="imagens/Design-sem-nome-6-1024x1024.webp" alt="Somos" class="w-100">
-            </div>
-            <div class="col-md-6 mt-3">
-                <h2>Dúvidas sobre como pagar seu boleto de quitação?</h2>
-                <p>Pagar seu boleto é simples! Confira as opções:</p>
-                <p><strong> Banking ou App Bancário:</strong>  Pague direto pelo aplicativo do seu banco.</p>
-                <p><strong>Conta Digital:</strong>  Utilize sua conta digital para efetuar o pagamento.</p>
-                <p><strong>Agências Bancárias:</strong>  Procure a agência do seu banco.</p>
-                <p><strong>Casas Lotéricas:</strong>  Verifique a possibilidade de pagamento em lotéricas, conforme o valor.</p>
-
-                <p>Como baixar o boleto?</p>
-                <p>Após fechar um acordo, o boleto será enviado por e-mail (PDF) ou SMS (código de barras).Você também pode acessar o site da QueroQuitar, fazer login, localizar o acordo em “Detalhes do Acordo” e baixar o boleto ou copiar o código de barras para pagamento.</p>
-
-            </div>
-        </div>
-        </div>
-    </section>
-
-    
-    <a href="https://wa.link/nk67wk" class="whatsapp-button" target="_blank">
-        <i class="fab fa-whatsapp"></i>
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.link/wd3a9d" class="whatsapp-float" target="_blank">
+        <i class="fa fa-whatsapp"></i>
     </a>
 
-    <!-- Bootstrap JS e dependências -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.4.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
 </body>
-
-</html>
 </html>
