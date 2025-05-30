@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gerenciador de Pagamentos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Importante para responsividade -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #333;
+            padding: 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        input,
+        button {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+            border: 1px solid #fff;
+            width: 100%;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: white;
+            padding: 10px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 5px solid #007BFF;
+            flex-wrap: wrap;
+        }
+
+        .info {
+            flex-grow: 1;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            min-width: 120px;
+        }
+
+        .totals {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column;
+                width: 90%;
+            }
+
+            .delete-btn {
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            li {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .info {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2 style="color: #fff;">Gerenciador de Pagamentos</h2>
+
+    <div class="container">
+        <input type="text" id="nome" placeholder="Nome">
+        <input type="text" id="preco" placeholder="Preço (ex: 1.000,00)">
+        <input type="time" id="hora">
+        <button onclick="adicionarPagamento()">Adicionar</button>
+    </div>
+
+    <ul id="listaPagamentos"></ul>
+
+    <div class="totals">
+        Total: R$ <span id="total">0,00</span><br>
+        Valor com - 45%: R$ <span id="desconto">0,00</span>
+    </div>
+
+    <script>
+        let pagamentos = [];
+
+        // Carrega do localStorage ao abrir a página
+        window.onload = function () {
+            const dadosSalvos = localStorage.getItem("pagamentos");
+            if (dadosSalvos) {
+                pagamentos = JSON.parse(dadosSalvos);
+                atualizarLista();
+            }
+        };
+
+        function adicionarPagamento() {
+            const nome = document.getElementById("nome").value.trim();
+            const precoStr = document.getElementById("preco").value.trim();
+            const hora = document.getElementById("hora").value;
+
+            if (!nome || !precoStr || !hora) {
+                alert("Preencha todos os campos.");
+                return;
+            }
+
+            const preco = parseFloat(precoStr.replace(/\./g, '').replace(',', '.'));
+
+            if (isNaN(preco)) {
+                alert("Formato de preço inválido. Use ex: 1.000,00");
+                return;
+            }
+
+            const pagamento = { nome, preco, hora, precoFormatado: precoStr };
+            pagamentos.push(pagamento);
+
+            salvarNoLocalStorage(); // Salva após adicionar
+            atualizarLista();
+            limparCampos();
+        }
+
+        function atualizarLista() {
+            const lista = document.getElementById("listaPagamentos");
+            lista.innerHTML = "";
+
+            pagamentos.forEach((pagamento, index) => {
+                const li = document.createElement("li");
+
+                const info = document.createElement("div");
+                info.className = "info";
+                info.textContent = `${pagamento.nome} - R$${pagamento.precoFormatado} - ${pagamento.hora}`;
+
+                const btn = document.createElement("button");
+                btn.textContent = "Excluir";
+                btn.className = "delete-btn";
+                btn.onclick = () => {
+                    pagamentos.splice(index, 1);
+                    salvarNoLocalStorage(); // Salva após excluir
+                    atualizarLista();
+                };
+
+                li.appendChild(info);
+                li.appendChild(btn);
+                lista.appendChild(li);
+            });
+
+            atualizarTotais();
+        }
+
+        function atualizarTotais() {
+            const total = pagamentos.reduce((soma, p) => soma + p.preco, 0);
+            const desconto = total * 0.55;
+
+            document.getElementById("total").textContent = total.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+            document.getElementById("desconto").textContent = desconto.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+        }
+
+        function limparCampos() {
+            document.getElementById("nome").value = "";
+            document.getElementById("preco").value = "";
+            document.getElementById("hora").value = "";
+        }
+
+        function salvarNoLocalStorage() {
+            localStorage.setItem("pagamentos", JSON.stringify(pagamentos));
+        }
+    </script>
+
+</body>
+
+</html>
