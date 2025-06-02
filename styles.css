@@ -136,7 +136,7 @@ body {
 
 .hero {
     position: relative;
-    background: url('img/banner-1atendimento.png') center center/cover no-repeat;
+    background: url('banner-1.png') center center/cover no-repeat;
     padding: 120px 0;
     color: white;
     text-align: center;
