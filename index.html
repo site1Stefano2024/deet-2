@@ -47,10 +47,17 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <!-- Hero Section -->
         <section class="hero">
-            <div class="overlay"></div> <!-- camada escura -->
+            <!-- Vídeo em background -->
+            <video autoplay muted loop playsinline class="hero-video">
+                <source src="video/video-banner.mp4" type="video/mp4" />
+                Seu navegador não suporta vídeos HTML5.
+            </video>
+
+            <!-- Camada escura sobre o vídeo -->
+            <div class="overlay"></div>
+
+            <!-- Conteúdo da Hero -->
             <div class="container">
                 <div class="hero-content">
                     <h1 class="hero-title">Soluções Financeiras Simplificadas</h1>
@@ -64,7 +71,6 @@
                 </div>
             </div>
         </section>
-
 
         <!-- Services Section -->
         <section id="servicos" class="services">
